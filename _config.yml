@@ -1,0 +1,75 @@
+# Site settings
+title: Blog - Zuru Tech
+email: italy@zuru.tech
+description: We are creating the first app that crafts real buildings - we are hiring!
+
+baseurl: ""
+url: "https://blog.zuru.tech"
+default-image: logo_zuru.png
+
+# Footer
+built-by: webjeda
+copyright:
+   name: ZURU Tech
+   link: 'https://zuru.tech/'
+
+# Build settings
+markdown: kramdown
+permalink: /:categories/:year/:month/:day/:slug
+
+# Tracker
+analytics: UA-113891536-1
+
+# Comments
+disqus-shortname:
+
+# Social
+facebook: https://www.facebook.com/zurutech
+quora:
+twitter: https://twitter.com/zurutechint
+github: https://github.com/zurutech
+
+# Facebook like box
+fb-app-id: 549480635219583
+fb-page-url: https://www.facebook.com/zurutech
+fb-page-title: zurutech
+
+# Sass style
+sass:
+  style: compressed
+
+# Ruby Gems
+plugins: [jekyll-seo-tag jekyll-author]
+
+# Theme colors based on tags
+##### Tags are the teams ######
+themeColor:
+  announcement:
+    backgroundColor: "#E4F1FE"
+    fontColor: "#000000"
+  coding:
+    backgroundColor: "#E4F1FE"
+    fontColor: "#000000"
+  devices:
+    backgroundColor: "#E8D7EB"
+    fontColor: "#22262A"
+  graphics:
+    backgroundColor: "#fbebde"
+    fontColor: "#122e94"
+  machine-learning:
+    backgroundColor: "#d4f2df"
+    fontColor: "#024542"
+  robotics:
+    backgroundColor: "#C5EFF7"
+    fontColor: "#000000"
+  vr:
+    backgroundColor: "#caf5fc"
+    fontColor: "#122e94"
+  web:
+    backgroundColor: "#001A47"
+    fontColor: "#FF8585"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor

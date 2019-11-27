@@ -1,0 +1,143 @@
+---
+layout: default
+---
+<div class="post-container">
+    {% include header.html %}
+    <div class="internal-page-banner-design">
+        <canvas id="stars" width="300" height="300"></canvas>
+    </div>
+    <div class="container {{ page.did }}">    
+
+        {% assign mainTag = page.tags[0] %}
+        {% assign postTheme = site.themeColor[mainTag] %}
+
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+                        <header class="post-header">
+                            <p class="post-meta">
+                                <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{
+                                    page.date | date:
+                                    "%-d %B %Y" }}
+                                </time>
+                                {% if page.author %} • <span itemprop="author" itemscope
+                                                             itemtype="http://schema.org/Person"><span
+                                    itemprop="name"><a href="#author-card">{{ page.author }}</a></span></span>{% endif %}
+                            </p>
+                            <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+                        </header>
+
+                        <div class="post-content text-justify" itemprop="articleBody">
+                            {{ content }}
+                        </div>
+
+                    </article>
+
+
+                    {% if page.author.name and page.author.uri %}
+                    <div style="width:3em;height:3em;background:red">
+                        <a href="{{ page.author.uri }}"><h1>{{ page.author.name }}</h1></a>
+                    </div>
+                    {% else %}
+                    <!--<div>-->
+                    <!--<div style="width:4em;height:4em;border-radius:3em;background:red;"></div>-->
+                    <!--<h1 style="margin-left:3em;">{{ page.author }}</h1>-->
+                    <!--</div>-->
+                    {% assign author = site.data.authors[page.author] %}
+                    <div id="author-card" class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-10 col-md-10 col-sm-10">
+                                    <!-- If redirect to author page href="{{ author.uri }}" -->
+                                    <p class="author-name-title"><a href="#" class="author-name-link">{{ author.name }}</a> {{ author.bio }}</p>
+                                    <div class="social-icon">
+                                        {% if author.facebook %}
+                                            <a href="{{ author.facebook }}" target="_blank" class="fa fa-facebook icon-maker"></a>
+                                        {% endif %}
+                                        {% if author.twitter %}
+                                            <a href="{{ author.twitter }}" target="_blank" class="fa fa-twitter icon-maker"></a>
+                                        {% endif %}
+                                        {% if author.google %}
+                                            <a href="{{ author.google }}" target="_blank" class="fa fa-google icon-maker"></a>
+                                        {% endif %}
+                                        {% if author.reddit %}
+                                            <a href="{{ author.reddit }}" target="_blank" class="fa fa-reddit icon-maker"></a>
+                                        {% endif %}
+                                        {% if author.linkedin %}
+                                            <a href="{{ author.linkedin }}" target="_blank" class="fa fa-linkedin icon-maker"></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <div class="author-thumbnail">
+                                        <img src="{{author.image}}" alt="profile">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pack post-suggestion-container">
+            <!--<ul class="pager">
+                {% if page.next.url %}
+                <li><a class="next" href="{{page.next.url | prepend: site.baseurl}}">&laquo;
+                    {{page.next.title}}</a>
+                </li>
+                {% endif %}
+                {% if page.previous.url %}
+                <li><a class="previous" href="{{page.previous.url | prepend: site.baseurl}}">{{page.previous.title}}
+                    &raquo;</a></li>
+                {% endif %}
+            </ul>-->
+
+            {% assign ctr = 0 %}
+            {% for post in site.posts %}
+
+            {% if ctr>3 %}
+            {% break %}
+            {%endif%}
+
+            {% if page.did != post.did%}
+                <div id="{{post.did}}" class="col-md-3 card {% for tag in post.tags %}
+                                         {{ tag }}
+                                         {% endfor %}">
+                    <a href="{{ post.url | prepend: site.baseurl }}" class="index-anchor">
+
+                        {% assign mainTag = post.tags[0] %}
+                        {% assign postTheme = site.themeColor[mainTag] %}
+
+                        <div class="panel panel-default"
+                             style="background-color:{{postTheme.backgroundColor}};color:{{postTheme.fontColor}};">
+
+                            {% if post.img %}
+                            <div class="card-image-container" style="background-color:{{postTheme.fontColor}}">
+                                <img width="100%" src="{{site.baseurl}}/images/{{post.img}}" alt="{{post.title}}">
+                            </div>
+                            {% else %}
+                            <img width="100%" src="{{site.baseurl}}/images/webjeda-logo-big.jpg" alt="{{site.title}}">
+                            {% endif %}
+
+                            <div class="panel-body">
+                                <p class="card-tags-name">{% for t in post.tags%} {{t}}{% unless forloop.last %} / {% endunless %}  {%endfor%}</p>
+                                <h3 class="panel-title float-left">{{ post.title | truncate: 40 }}</h3><span
+                                    class="post-meta float-right test"><small class="blog-post-date">{{ post.date | date: "%-d %B %Y" }}</small></span>
+                            </div>
+
+                            <div class="panel-body">
+                                <p class="card-sample-content">
+                                    {{ post.excerpt | strip_html | strip_newlines | truncate: 120 }}Read
+                                </p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% assign ctr = ctr | plus: 1 %}
+            {%endif%}
+            {%endfor%}
+        </div>
+    </div>
