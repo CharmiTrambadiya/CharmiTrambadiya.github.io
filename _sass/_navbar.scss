@@ -38,6 +38,12 @@
       }
       @media (max-width: 767px) {
         justify-content: left;
+        margin-top: 0px;
+      }
+      img{
+        @media (max-width: 767px) {
+          width: 71px !important;
+        }
       }
     }
     .navbar-toggler {
