@@ -4,8 +4,8 @@
   background: rgba(241, 241, 241, 0.7);
   .navbar {
     min-height: 65px;
-    padding-right: 220px !important;
-    padding-left: 220px !important;
+    padding-right: 220px;
+    padding-left: 220px;
     @media (max-width: 1366px) {
       padding-right: 100px !important;
       padding-left: 100px !important;
@@ -30,7 +30,10 @@
       .home-logo {
         width: auto;
         height: 25px;
-        margin-bottom: 2px;
+      }
+      @media (max-width: 1023px) and (min-width:768px){
+        margin-left: -18px;
+        margin-bottom: 8px;
       }
     }
     .navbar-toggler {
@@ -108,8 +111,8 @@
         opacity: 1;
         background-color: transparent;
         @media (max-width: 991px) and (min-width: 768px) {
-          height: auto !important;
-          top: auto !important;
+          height: 36px !important;
+          top: 0px !important;
         }
         @media (max-width: 767px) {
           height: auto !important;
@@ -175,18 +178,18 @@
     font-family: "HindMadurai";
 
     @media (max-width: 1366px) {
-      padding-right: 100px;
-      padding-left: 100px;
+      padding-right: 85px;
+      padding-left: 85px;
     }
 
     @media (max-width: 992px) {
-      padding-right: 60px;
-      padding-left: 60px;
+      padding-right: 45px;
+      padding-left: 45px;
     }
 
     @media (min-width: 1921px) {
-      padding-right: 510px;
-      padding-left: 510px;
+      padding-right: 495px !important;
+      padding-left: 495px !important;
     }
 
     @media (max-width: 991px) {
